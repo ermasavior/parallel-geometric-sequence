@@ -28,6 +28,8 @@ Run pthread:
 
 Compile MPI:
 
-
+    mpicc -o geosum geosum.c -lm
 
 Run MPI:
+
+    mpiexec -n <number_of_process> geosum

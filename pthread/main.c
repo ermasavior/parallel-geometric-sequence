@@ -14,6 +14,9 @@ void *geometricSum(void* rank);
 int main(int argc, char* argv[]) {
     long        thread;
     pthread_t*  thread_handles;
+	double time_spent = 0.0;
+
+	clock_t begin = clock();
 
     // ./main <thread_count> <a> <r> <n>
     thread_count = strtol(argv[1], NULL, 10);
@@ -35,8 +38,12 @@ int main(int argc, char* argv[]) {
     }
     free(thread_handles);
 
-    printf("\na = %.2lf, r = %.2lf, n = %ld\n", a, r, n);
+    clock_t end = clock();
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+
+    printf("a = %.2lf, r = %.2lf, n = %ld\n", a, r, n);
     printf("Sn = %.2lf\n", sum);
+    printf("Time elapsed is %f seconds\n", time_spent);
     return 0;
 }
 
