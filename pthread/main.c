@@ -9,7 +9,6 @@ long n;
 double a, r;
 double sum = 0;
 
-void *Hello(void* rank);
 void *geometricSum(void* rank);
 
 int main(int argc, char* argv[]) {
@@ -23,11 +22,6 @@ int main(int argc, char* argv[]) {
     n = strtol(argv[4], NULL, 10);
 
     flag = 0;
-
-    // for (int i = 1; i <= n; i++) {
-    //     sum += a * pow(r, i-1);
-    // }
-    // printf("%.3lf\n", sum);
 
     thread_handles = malloc(thread_count*sizeof(pthread_t));
 
@@ -44,13 +38,6 @@ int main(int argc, char* argv[]) {
     printf("\na = %.2lf, r = %.2lf, n = %ld\n", a, r, n);
     printf("Sn = %.2lf\n", sum);
     return 0;
-}
-
-void *Hello(void* rank) {
-    long my_rank = (long) rank;
-
-    printf("Hello from the %ld of %d side\n", my_rank, thread_count);
-    return NULL;
 }
 
 void *geometricSum(void* rank) {
